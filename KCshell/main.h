@@ -18,7 +18,7 @@
 #define CMD_AND		2
 #define CMD_CHAIN	3
 
-/* for read and write buffers */
+/* for read and write bfrfers */
 #define WRITE_BUF_SIZE 1024
 #define READ_BUF_SIZE 1024
 #define BUF_FLUSH -1
@@ -67,8 +67,8 @@ typedef struct liststr
  * @alias: the alias node
  * @env_changed: on if environ was changed
  * @status: the return status of the last execd command
- * @cmd_buf: address of pointer to cmd_buf, on if chaining
- * @cmd_buf_type: CMD_type ||, &&, ;
+ * @cmd_bfr: address of pointer to cmd_bfr, on if chaining
+ * @cmd_bfr_type: CMD_type ||, &&, ;
  * @readfd: the fd from which to read line input
  * @histcount: the history line number count
  */
@@ -89,8 +89,8 @@ typedef struct passinfo
 	int env_changed;
 	int status;
 
-	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
-	int cmd_buf_type; /* CMD_type ||, &&, ; */
+	char **cmd_bfr; /* pointer to cmd ; chain bfrfer, for memory mangement */
+	int cmd_bfr_type; /* CMD_type ||, &&, ; */
 	int readfd;
 	int histcount;
 } info_t;
@@ -208,7 +208,7 @@ int _setenv(info_t *, char *, char *);
 char *get_history_file(info_t *info);
 int write_history(info_t *info);
 int read_history(info_t *info);
-int build_history_list(info_t *info, char *buf, int linecount);
+int build_history_list(info_t *info, char *bfr, int linecount);
 int renumber_history(info_t *info);
 
 /* toem_lists.c */
@@ -225,11 +225,11 @@ size_t print_list(const list_t *);
 list_t *node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
 
-/* toem_vars.c */
+/* toem_vrs.c */
 int is_chain(info_t *, char *, size_t *);
 void check_chain(info_t *, char *, size_t *, size_t, size_t);
 int replace_alias(info_t *);
-int replace_vars(info_t *);
+int replace_vrs(info_t *);
 int replace_string(char **, char *);
 
 #endif
