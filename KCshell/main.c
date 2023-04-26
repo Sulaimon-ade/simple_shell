@@ -9,7 +9,7 @@
  */
 
 int main(int ac, char **argv){
-  char *prompt = "(Eshell) $ ";
+  char *prompt = "(kingNco) :) ";
   char *lineptr;
   size_t n = 0;
 
