@@ -1,14 +1,16 @@
 #include <stdio.h>
 /**
- *main - print a simple number from
+ *betty - print a simple number from
  * 1 - 20
  * Return: Always 0
  */
-int main(void)
+int betty(void)
 {
 	int i;
+	int betty;
 
 	for (i = 1; i <= 20; i++)
 		return (i);
-	return(0);
+	betty = i + 2;
+	return (betty);
 }
